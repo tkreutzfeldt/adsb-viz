@@ -1,0 +1,29 @@
+resources:
+  jobs:
+    adsb_etl_pipeline:
+      name: "[${bundle.target}] ADS-B ETL Pipeline"
+      tasks:
+        - task_key: load_bronze
+          notebook_task:
+            notebook_path: ../notebooks/load_bronze.py
+            base_parameters:
+              catalog: ${var.catalog}
+              schema: ${var.schema}
+
+        - task_key: etl
+          depends_on:
+            - task_key: load_bronze
+          notebook_task:
+            notebook_path: ../notebooks/adsb_etl.py
+            base_parameters:
+              catalog: ${var.catalog}
+              schema: ${var.schema}
+
+        - task_key: ml
+          depends_on:
+            - task_key: etl
+          notebook_task:
+            notebook_path: ../notebooks/adsb_ml.py
+            base_parameters:
+              catalog: ${var.catalog}
+              schema: ${var.schema}

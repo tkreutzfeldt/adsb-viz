@@ -1,0 +1,23 @@
+bundle:
+  name: adsb-viz
+
+include:
+  - resources/*.yml
+
+variables:
+  catalog:
+    default: "tim-kreutzfeldt-test"
+  schema:
+    default: "adsb"
+  warehouse_id:
+    default: ""
+
+targets:
+  sandbox:
+    default: true
+    workspace:
+      profile: fe-sandbox-serverless
+    variables:
+      catalog: "tim-kreutzfeldt-test"
+      schema: "adsb"
+      warehouse_id: "df4fcfa3d352c7cc"

@@ -1,0 +1,12 @@
+resources:
+  apps:
+    adsb_viz_app:
+      name: "adsb-viz-${bundle.target}"
+      description: "ADS-B DMV Flight Tracking Visualization"
+      source_code_path: ../app
+      resources:
+        - name: sql-warehouse
+          description: "SQL warehouse for queries"
+          sql_warehouse:
+            id: ${var.warehouse_id}
+            permission: CAN_USE

@@ -13,8 +13,8 @@ if os.path.exists(".env"):
             os.environ.setdefault(k.strip(), v.strip())
 
 WAREHOUSE_ID = os.environ.get("DATABRICKS_WAREHOUSE_ID", "")
-CATALOG = "tim-kreutzfeldt-test"
-SCHEMA = "adsb"
+CATALOG = os.environ.get("DATABRICKS_CATALOG", "tim-kreutzfeldt-test")
+SCHEMA = os.environ.get("DATABRICKS_SCHEMA", "adsb")
 TABLE = "adsb_gold"
 
 # DMV bounding box (covers IAD, DCA, and BWI with margin)

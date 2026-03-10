@@ -1,0 +1,10 @@
+# Python
+__pycache__/
+*.pyc
+.env
+
+# Data (raw files managed via LFS archive)
+data/raw/
+
+# Databricks
+.databricks/
